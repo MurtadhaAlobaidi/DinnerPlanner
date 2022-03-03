@@ -1,2 +1,1 @@
-# week1
-tw1.1
+# DH2642 Interaktionsprogrammering och dynamiska webben kurs i KTH
