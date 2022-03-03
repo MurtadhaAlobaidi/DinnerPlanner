@@ -1,0 +1,155 @@
+<html>
+<head>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="js/views/SummaryView.js" type="text/jsx"></script>
+<script src="js/views/SidebarView.js" type="text/jsx"></script>
+<script src="js/views/searchView.js" type="text/jsx"></script>
+<script src="js/views/detailsView.js" type="text/jsx"></script>
+<script src="js/views/promiseNoData.js" type="text/jsx"></script>
+<script src="js/app.js" type="text/jsx"></script>
+<script src="vuejs/sidebarPresenter.js" type="text/jsx"></script>
+<script src="vuejs/summaryPresenter.js" type="text/jsx"></script>
+<script src="js/DinnerModel.js"></script>
+<script src="js/apiConfig.js"></script>
+<script src="js/dishSource.js"></script>
+
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+<div id="app"></div>
+</body>
+
+<!-- <script type="text/jsx">
+const persons=4;
+function ReactTopLevelNumber(){
+  const [num, setNumber]= React.useState(2); 
+  return (
+    <div>
+       <SidebarView guests={num} setGuests={x=> {setNumber(x); console.log("the user wants a dinner for " + x + " guests")}} />
+       <SummaryView persons = {num} />
+       <RenderTest />
+    </div> 
+  );
+}
+
+ReactDOM.render(
+   <div>
+
+    <SearchFormView  
+      options={["starter", "main course", "dessert"]}    
+      onSearch={()=>console.log("User wants to search!")}             
+      onText={txt=>console.log("User typed: ", txt)}	
+      onDishType={dishType=>console.log("User chose dish type: ", dishType)}
+    />
+
+    <ReactTopLevelNumber />
+
+   </div>
+,  document.getElementById("app")
+);
+</script>
+<script type="text/jsx">
+  DishSource.searchDishes({query:"pizza"}).then(results=>
+            ReactDOM.render(     <SearchResultsView searchResults={results}
+                                                    dishChosen={id=> console.log("The user chose dish ", id)}  />,
+            document.getElementById("app")));
+</script> -->
+
+<!-- <script type="text/jsx">
+  Promise.all(
+    [DishSource.getDishDetails(523145), 
+    DishSource.getDishDetails(787321),
+    DishSource.getDishDetails(452179)]
+).then(values=> ReactDOM.render(
+   <SidebarView guests={5} 
+                dishes={values}
+                removeDish={id=> console.log("user wants to remove dish with ID ", id)}
+                dishChoice={id=> console.log("user wants details of dish with ID ", id)} />
+, document.getElementById("app")))
+</script> -->
+<!-- <script type="text/jsx">
+DishSource.getDishDetails(547775).then(details=>
+          ReactDOM.render(<DetailsView dish={details} people={3}  isDishInMenu={false}  
+                                    dishAdded={()=>console.log("User wants to add this dish! ", details)} />
+                       , document.getElementById("app")));
+</script> -->
+
+<!-- <script type="text/jsx">
+  Promise.all(
+    [DishSource.getDishDetails(523145), 
+    DishSource.getDishDetails(787321),
+    DishSource.getDishDetails(452179)]
+).then(values=> ReactDOM.render(
+    <SummaryView persons={5} 
+                 ingredients={getIngredients(values)} />
+                  , document.getElementById("app")))
+</script> -->
+
+<!-- <script type="text/jsx">
+  const myModel=new DinnerModel(5);
+  Promise.all(
+    [DishSource.getDishDetails(523145), 
+    DishSource.getDishDetails(787321),
+    DishSource.getDishDetails(452179)]
+  ).then(values=> values.map(d=>myModel.addToMenu(d)))
+   .then(()=> { myModel.removeFromMenu({id:787321}); console.log(myModel); })
+  </script> -->
+
+<!--   <script type="text/jsx">
+    const myModel=new DinnerModel(3);
+    function RenderTest(){ console.log("React sub-component render test"); return false; }
+    function ReactTopLevelNumber(){
+      const [model, removeDish]= React.useState(myModel); 
+      return (
+        <div>
+           <App model = {myModel} />
+           <RenderTest />
+        </div> 
+      );
+    }
+
+  Promise.all(
+    [DishSource.getDishDetails(523145), 
+    DishSource.getDishDetails(787321),
+    DishSource.getDishDetails(452179)]
+    ).then(function(values){ 
+      values.map(d=>myModel.addToMenu(d)); 
+      ReactDOM.render(<ReactTopLevelNumber />, document.getElementById("app"));
+      });
+  </script> -->
+
+<script type="text/jsx"> 
+const searchPromise= DishSource.searchDishes({type:"main course", query:"pasta" });
+function SearchTest(){
+   const [data, setData]=React.useState(null);
+   const [error, setError]=React.useState(null);
+   React.useEffect(function(){ 
+       searchPromise.then(dt=> setData(dt))
+                    .catch(er=> setError(er))
+   }, []);
+   return promiseNoData(searchPromise,data,error) || <SearchResultsView searchResults={data} dishChosen={console.log}/>
+} 
+
+const detailsPromise= DishSource.getDishDetails(523145);
+function DetailsTest(){
+  const [data, setData]=React.useState(null);
+  const [error, setError]=React.useState(null);
+  React.useEffect(function(){ 
+    detailsPromise.then(dt=> setData(dt))
+                   .catch(er=> setError(er))
+  }, []);
+  return promiseNoData( detailsPromise,data,error) || <DetailsView dish={data} people={4} isDishInMenu={false} dishAdded={console.log}/>
+}
+
+
+
+
+ReactDOM.render(<div><SearchTest /><DetailsTest/></div>, document.getElementById("app"))
+</script>
+
+</html>

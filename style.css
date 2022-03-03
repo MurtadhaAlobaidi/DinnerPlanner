@@ -1,0 +1,204 @@
+.searchResult{
+    text-align: center;
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+    padding: 5 px;
+}
+.bold{
+    font-weight: bold;
+}
+.detailsViewItems{
+
+    display: block;
+    margin: 10px;
+    padding: 10px;
+
+}
+.summaryViewTable{
+    border: solid;
+    background-color: rgb(232, 232, 232);
+}
+table, th, td {
+    border: 1px solid black;
+}
+/* .debug{ 	
+    border-style: solid; 
+} */
+
+@media(min-width:250px){
+    .flexParent{ display:flex; 
+        flex-direction: row; 
+        height:100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      
+
+    }
+  }
+  
+@media (max-width: 400px) {
+    .mainContent {
+      width: 100%;  
+      text-align: center;
+    }
+  }
+
+  .hidden{
+      display: none;
+  }
+
+  .navigationButtonAdd{
+      font-size: 20px;
+      margin: 15px;
+      margin-left: 30px;
+  }
+  .navigationButtonCancel{
+    font-size: 20px;
+    margin: 15px;
+    margin-left: 20px;
+
+}
+
+  .backToSearch{
+      float:right;
+      margin-top: 10px;
+  }
+
+  #dishItem{
+    margin: 10px;
+    border: solid black 3px;
+    height: 170px;
+    border-radius: 5px;
+  }
+
+  #dishItem:hover{
+      background-color: rgb(167, 195, 248);
+  }
+
+  #searchItem{
+    height: 5%;
+    width: 200px;
+    margin: 10px;
+    font-size: 20px;
+  }
+
+  #summaryDivButton{
+    height: 40px;
+    width: 40px;
+    margin: 15px;
+    font-size: 20px;
+    size: 100px;
+    border-radius: 75%;
+  }
+
+  #summaryDivSpan2{
+    font-size: 25px;
+    margin: auto;
+    position: relative;
+  }
+
+  .summaryDivSpan1{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .sidebarMainDiv{
+      background-color: rgb(245, 244, 241);
+  }
+
+  #sidebarViewheaderDiv{
+      text-align: center;
+  }
+
+  #sidebarTable{
+      min-width: 275px;
+      max-width: 700px;
+  }
+
+  #detailsDiv{
+      border-style: solid;
+  }
+  .sidebar{
+    border-style: solid;
+    background-color: rgb(245, 244, 241);
+}
+#detailsImage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  margin-bottom: 15px;
+  border-style: double;
+}
+#instructionsDiv{
+    margin-left: 30px;
+    border-style: inset;
+    font-size: 20px;
+    background-color: rgb(219, 243, 243);
+}
+
+#IngredientsDiv{
+    margin-left: 30px;
+    border-style: inset;
+    font-size: 20px;
+    display: inline-block;
+    padding-left: 5px;
+    background-color: rgb(219, 243, 243);
+    padding-right: 15px;
+}
+
+#PriceDiv{
+    margin-left: 30px;
+    font-size:18px;
+    font-weight: bold;
+    border-style: inset;
+    display: inline-block;
+    background-color: rgb(219, 243, 243);
+}
+
+#moreInformationLink{
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#detailsTitle{
+    text-align: center;
+    font-size: 30px;
+}
+
+#pointDetailsViewItems{
+    list-style: circle;
+}
+
+#dishName{
+    text-align: center;
+}
+
+#summaryButton{
+    float: right;
+    height: 5%;
+    width: 100px;
+    margin-top: 11px;
+    font-size: 15px;
+    display: inline;
+    border-radius: 5px;
+    
+}
+
+#websiteName{
+    text-shadow: 2px 2px 5px red;
+
+}
+
+#cartTitle{
+    margin-left: 10 px;
+    font-weight: bold;
+}
